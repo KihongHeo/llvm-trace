@@ -83,14 +83,14 @@ struct TracePass : public ModulePass {
 } // namespace
 
 char TracePass::ID = 0;
-/*  static void registerSkeletonPass(const PassManagerBuilder &,
-                                   legacy::PassManagerBase &PM) {
-    PM.add(new TracePass());
-  }
+static void registerTracePass(const PassManagerBuilder &,
+                              legacy::PassManagerBase &PM) {
+  PM.add(new TracePass());
+}
 
-  static RegisterStandardPasses
-      RegisterMyPass(PassManagerBuilder::EP_EarlyAsPossible,
-                     registerSkeletonPass);
-  */
-static RegisterPass<TracePass> X("TracePass", "MyPassPrintf Pass", false,
+static RegisterStandardPasses
+    RegisterMyPass(PassManagerBuilder::EP_EarlyAsPossible, registerTracePass);
+
+/*static RegisterPass<TracePass> X("TracePass", "MyPassPrintf Pass", false,
                                  false);
+                                 */
